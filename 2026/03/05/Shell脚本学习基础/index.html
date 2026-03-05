@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"dingzifan719.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.24.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Shell脚本学习基础1. Shell脚本简介Shell是一个命令行解释器，它为用户提供了一个向Linux内核发送请求以便运行程序的界面系统级程序。Shell脚本是一种为Shell编写的脚本程序，类似于Windows下的批处理文件。 Shell脚本的优点：  自动化日常任务 批处理文件操作 快速原型开发 系统管理和维护  常见的Shell类型：  Bash (Bourne Again SHell)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Shell脚本学习基础">
+<meta property="og:url" content="https://dingzifan719.github.io/2026/03/05/Shell%E8%84%9A%E6%9C%AC%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="叮">
+<meta property="og:description" content="Shell脚本学习基础1. Shell脚本简介Shell是一个命令行解释器，它为用户提供了一个向Linux内核发送请求以便运行程序的界面系统级程序。Shell脚本是一种为Shell编写的脚本程序，类似于Windows下的批处理文件。 Shell脚本的优点：  自动化日常任务 批处理文件操作 快速原型开发 系统管理和维护  常见的Shell类型：  Bash (Bourne Again SHell)">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-03-05T12:43:55.000Z">
+<meta property="article:modified_time" content="2026-03-05T12:45:29.039Z">
+<meta property="article:author" content="Ding">
+<meta property="article:tag" content="Shell">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="脚本编程">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://dingzifan719.github.io/2026/03/05/Shell%E8%84%9A%E6%9C%AC%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://dingzifan719.github.io/2026/03/05/Shell%E8%84%9A%E6%9C%AC%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/","path":"2026/03/05/Shell脚本学习基础/","title":"Shell脚本学习基础"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Shell脚本学习基础 | 叮</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">叮</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell%E8%84%9A%E6%9C%AC%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">Shell脚本学习基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Shell%E8%84%9A%E6%9C%AC%E7%AE%80%E4%BB%8B"><span class="nav-number">1.1.</span> <span class="nav-text">1. Shell脚本简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%AC%AC%E4%B8%80%E4%B8%AAShell%E8%84%9A%E6%9C%AC"><span class="nav-number">1.2.</span> <span class="nav-text">2. 第一个Shell脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%84%9A%E6%9C%AC%E6%96%87%E4%BB%B6"><span class="nav-number">1.2.1.</span> <span class="nav-text">创建脚本文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Shell%E5%8F%98%E9%87%8F"><span class="nav-number">1.3.</span> <span class="nav-text">3. Shell变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E5%AE%9A%E4%B9%89"><span class="nav-number">1.3.1.</span> <span class="nav-text">变量定义</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Ding</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dingzifan719.github.io/2026/03/05/Shell%E8%84%9A%E6%9C%AC%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ding">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叮">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Shell脚本学习基础 | 叮">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Shell脚本学习基础
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-03-05 20:43:55 / 修改时间：20:45:29" itemprop="dateCreated datePublished" datetime="2026-03-05T20:43:55+08:00">2026-03-05</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="Shell脚本学习基础"><a href="#Shell脚本学习基础" class="headerlink" title="Shell脚本学习基础"></a>Shell脚本学习基础</h1><h2 id="1-Shell脚本简介"><a href="#1-Shell脚本简介" class="headerlink" title="1. Shell脚本简介"></a>1. Shell脚本简介</h2><p>Shell是一个命令行解释器，它为用户提供了一个向Linux内核发送请求以便运行程序的界面系统级程序。Shell脚本是一种为Shell编写的脚本程序，类似于Windows下的批处理文件。</p>
+<p>Shell脚本的优点：</p>
+<ul>
+<li>自动化日常任务</li>
+<li>批处理文件操作</li>
+<li>快速原型开发</li>
+<li>系统管理和维护</li>
+</ul>
+<p>常见的Shell类型：</p>
+<ul>
+<li>Bash (Bourne Again SHell) - 最常用的Shell</li>
+<li>Sh (Bourne Shell) - 早期的Shell</li>
+<li>Csh (C Shell) - 类似C语言的语法</li>
+<li>Ksh (Korn Shell) - 结合了Bash和Csh的特点</li>
+</ul>
+<h2 id="2-第一个Shell脚本"><a href="#2-第一个Shell脚本" class="headerlink" title="2. 第一个Shell脚本"></a>2. 第一个Shell脚本</h2><h3 id="创建脚本文件"><a href="#创建脚本文件" class="headerlink" title="创建脚本文件"></a>创建脚本文件</h3><p>使用文本编辑器创建一个脚本文件，扩展名为 <code>.sh</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> hello.sh</span><br><span class="line"></span><br><span class="line"><span class="comment">### 编写脚本内容</span></span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line"><span class="comment">#!/bin/bash</span></span><br><span class="line"><span class="comment"># 这是一个简单的Shell脚本示例</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Hello, World!&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;当前日期和时间：<span class="subst">$(date)</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;当前工作目录：<span class="subst">$(pwd)</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;当前登录用户：<span class="subst">$(whoami)</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### 执行脚本</span></span><br><span class="line"></span><br><span class="line">1. 给脚本添加执行权限：</span><br><span class="line">   ```bash</span><br><span class="line">   <span class="built_in">chmod</span> +x hello.sh</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>执行脚本：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./hello.sh</span><br></pre></td></tr></table></figure>
+或者<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash hello.sh</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="3-Shell变量"><a href="#3-Shell变量" class="headerlink" title="3. Shell变量"></a>3. Shell变量</h2><h3 id="变量定义"><a href="#变量定义" class="headerlink" title="变量定义"></a>变量定义</h3><pre><code class="language-bash"># 定义变量，等号两边不能有空格
+name=&quot;Shell脚本&quot;
+age=20
+
+# 使用变量
+echo &quot;变量name的值：$name&quot;
+echo &quot;变量age的值：$&#123;age&#125;岁&quot;
+
+# 只读变量
+readonly PI=3.14159
+
+# 删除变量（不能删除只读变量）
+unset age
+
+### 环境变量
+
+```bash
+# 查看所有环境变量
+env
+
+# 查看特定环境变量
+echo $PATH
+echo $HOME
+echo $USER
+
+# 设置环境变量
+export MY_VAR=&quot;my value&quot;
+
+### 位置参数变量
+
+```bash
+#!/bin/bash
+# 脚本名称：params.sh
+echo &quot;脚本名称：$0&quot;
+echo &quot;第一个参数：$1&quot;
+echo &quot;第二个参数：$2&quot;
+echo &quot;参数个数：$#&quot;
+echo &quot;所有参数：$@&quot;
+echo &quot;所有参数（作为一个字符串）：$*&quot;
+
+执行：bash
+./params.sh arg1 arg2
+
+## 4. Shell基本运算符
+
+### 算术运算符
+
+```bash
+#!/bin/bash
+
+a=10
+b=20
+
+# 加法
+echo &quot;a + b = $((a + b))&quot;
+echo &quot;a + b = $(expr $a + $b)&quot;
+
+# 减法
+echo &quot;a - b = $((a - b))&quot;
+
+# 乘法（注意expr需要转义*）
+echo &quot;a * b = $((a * b))&quot;
+echo &quot;a * b = $(expr $a \* $b)&quot;
+
+# 除法
+echo &quot;b / a = $((b / a))&quot;
+
+# 取余
+echo &quot;b % a = $((b % a))&quot;
+
+# 赋值
+echo &quot;a = $a&quot;
+
+# 相等
+echo &quot;a == b ? $((a == b))&quot;
+
+# 不相等
+echo &quot;a != b ? $((a != b))&quot;
+
+### 关系运算符
+
+```bash
+#!/bin/bash
+
+a=10
+b=20
+
+if [ $a -eq $b ]
+then
+    echo &quot;a 等于 b&quot;
+else
+    echo &quot;a 不等于 b&quot;
+fi
+
+if [ $a -ne $b ]
+then
+    echo &quot;a 不等于 b&quot;
+fi
+
+if [ $a -gt $b ]
+then
+    echo &quot;a 大于 b&quot;
+else
+    echo &quot;a 不大于 b&quot;
+fi
+
+if [ $a -lt $b ]
+then
+    echo &quot;a 小于 b&quot;
+fi
+
+if [ $a -ge $b ]
+then
+    echo &quot;a 大于等于 b&quot;
+fi
+
+if [ $a -le $b ]
+then
+    echo &quot;a 小于等于 b&quot;
+fi
+
+### 字符串运算符
+
+```bash
+#!/bin/bash
+
+a=&quot;hello&quot;
+b=&quot;world&quot;
+
+if [ $a = $b ]
+then
+    echo &quot;a 等于 b&quot;
+else
+    echo &quot;a 不等于 b&quot;
+fi
+
+if [ $a != $b ]
+then
+    echo &quot;a 不等于 b&quot;
+fi
+
+if [ -z $a ]
+then
+    echo &quot;a 是空字符串&quot;
+else
+    echo &quot;a 不是空字符串&quot;
+fi
+
+if [ -n $a ]
+then
+    echo &quot;a 不是空字符串&quot;
+fi
+
+if [ $a ]
+then
+    echo &quot;a 不是空&quot;
+fi
+
+### 文件测试运算符
+
+```bash
+#!/bin/bash
+
+file=&quot;test.txt&quot;
+
+if [ -e $file ]
+then
+    echo &quot;文件存在&quot;
+else
+    echo &quot;文件不存在&quot;
+fi
+
+if [ -f $file ]
+then
+    echo &quot;是普通文件&quot;
+fi
+
+if [ -d $file ]
+then
+    echo &quot;是目录&quot;
+fi
+
+if [ -r $file ]
+then
+    echo &quot;文件可读&quot;
+fi
+
+if [ -w $file ]
+then
+    echo &quot;文件可写&quot;
+fi
+
+if [ -x $file ]
+then
+    echo &quot;文件可执行&quot;
+fi
+
+## 5. Shell条件语句
+
+### if语句
+
+```bash
+#!/bin/bash
+
+read -p &quot;请输入一个数字：&quot; num
+
+if [ $num -gt 0 ]
+then
+    echo &quot;这是一个正数&quot;
+elif [ $num -lt 0 ]
+then
+    echo &quot;这是一个负数&quot;
+else
+    echo &quot;这是零&quot;
+fi
+
+### case语句
+
+```bash
+#!/bin/bash
+
+read -p &quot;请选择一个选项(1-3)：&quot; choice
+
+case $choice in
+    1)
+        echo &quot;你选择了选项1&quot;
+        ;;
+    2)
+        echo &quot;你选择了选项2&quot;
+        ;;
+    3)
+        echo &quot;你选择了选项3&quot;
+        ;;
+    *)
+        echo &quot;无效选项&quot;
+        ;;
+esac
+
+## 6. Shell循环语句
+
+### for循环
+
+```bash
+#!/bin/bash
+
+# 遍历数字
+echo &quot;遍历数字：&quot;
+for i in &#123;1..5&#125;
+do
+    echo &quot;数字：$i&quot;
+done
+
+# 遍历列表
+echo &quot;\n遍历列表：&quot;
+fruits=(&quot;apple&quot; &quot;banana&quot; &quot;orange&quot; &quot;grape&quot;)
+for fruit in &quot;$&#123;fruits[@]&#125;&quot;
+do
+    echo &quot;水果：$fruit&quot;
+done
+
+# C风格for循环
+echo &quot;\nC风格for循环：&quot;
+for ((i=0; i&lt;5; i++))
+do
+    echo &quot;i = $i&quot;
+done
+
+### while循环
+
+```bash
+#!/bin/bash
+
+count=1
+while [ $count -le 5 ]
+do
+    echo &quot;计数：$count&quot;
+    count=$((count + 1))
+done
+
+# 无限循环（按Ctrl+C退出）
+# while true
+# do
+#     echo &quot;这是一个无限循环&quot;
+#     sleep 1
+# done
+
+### until循环
+
+```bash
+#!/bin/bash
+
+count=1
+until [ $count -gt 5 ]
+do
+    echo &quot;计数：$count&quot;
+    count=$((count + 1))
+done
+
+## 7. Shell函数
+
+### 函数定义和调用
+
+```bash
+#!/bin/bash
+
+# 定义函数
+greeting() &#123;
+    echo &quot;Hello, $1!&quot;
+    echo &quot;当前时间：$(date)&quot;
+&#125;
+
+# 调用函数
+greeting &quot;Shell&quot;
+
+### 带返回值的函数
+
+```bash
+#!/bin/bash
+
+# 定义带返回值的函数
+add() &#123;
+    local sum=$(( $1 + $2 ))
+    echo $sum
+&#125;
+
+# 调用函数并获取返回值
+result=$(add 10 20)
+echo &quot;10 + 20 = $result&quot;
+
+## 8. 常见Shell命令
+
+### 文件和目录操作
+
+```bash
+# 列出文件和目录
+ls -la
+
+# 创建目录
+mkdir dir1 dir2
+
+# 创建空文件
+touch file.txt
+
+# 复制文件或目录
+cp file.txt file_copy.txt
+cp -r dir1 dir1_copy
+
+# 移动或重命名文件/目录
+mv file.txt new_file.txt
+mv dir1 new_dir
+
+# 删除文件
+rm file.txt
+
+# 删除目录
+rm -rf dir1
+
+# 查看文件内容
+cat file.txt
+head -5 file.txt
+ tail -5 file.txt
+
+# 搜索文件内容
+grep &quot;pattern&quot; file.txt
+
+### 系统信息
+
+```bash
+# 查看系统版本
+uname -a
+cat /etc/os-release
+
+# 查看内存使用情况
+free -h
+
+# 查看磁盘使用情况
+df -h
+
+# 查看进程
+ps aux
+top
+
+# 查看网络连接
+netstat -tuln
+ss -tuln
+
+## 9. Shell脚本调试
+
+### 调试选项
+
+```bash
+# 执行时显示命令
+bash -x script.sh
+
+# 检查语法错误
+bash -n script.sh
+
+# 进入调试模式
+bash -v script.sh
+
+### 在脚本中添加调试信息
+
+```bash
+#!/bin/bash
+
+# 设置调试模式
+set -x
+
+echo &quot;调试模式开启&quot;
+name=&quot;Shell&quot;
+echo &quot;变量name：$name&quot;
+
+# 关闭调试模式
+set +x
+
+echo &quot;调试模式关闭&quot;
+
+## 10. 脚本示例：自动备份
+
+```bash
+#!/bin/bash
+
+# 定义备份目录和源目录
+BACKUP_DIR=&quot;/backup&quot;
+SOURCE_DIR=&quot;/home/user/documents&quot;
+
+# 创建备份目录（如果不存在）
+mkdir -p $BACKUP_DIR
+
+# 生成备份文件名（包含日期）
+BACKUP_FILE=&quot;$BACKUP_DIR/documents_$(date +%Y%m%d_%H%M%S).tar.gz&quot;
+
+# 执行备份
+echo &quot;开始备份...&quot;
+tar -czf $BACKUP_FILE $SOURCE_DIR
+
+# 检查备份是否成功
+if [ $? -eq 0 ]
+then
+    echo &quot;备份成功！备份文件：$BACKUP_FILE&quot;
+else
+    echo &quot;备份失败！&quot;
+    exit 1
+fi
+
+# 清理7天前的备份文件
+echo &quot;清理旧备份...&quot;
+find $BACKUP_DIR -name &quot;documents_*.tar.gz&quot; -type f -mtime +7 -delete
+
+echo &quot;备份任务完成！&quot;
+
+## 总结
+
+本教程介绍了Shell脚本的基础知识，包括：
+- Shell脚本的基本概念和创建方法
+- 变量定义和使用
+- 基本运算符（算术、关系、字符串、文件测试）
+- 条件语句（if-elif-else、case）
+- 循环语句（for、while、until）
+- 函数定义和调用
+- 常见Shell命令
+- 脚本调试技巧
+- 一个自动备份的脚本示例
+
+通过学习这些基础知识，你可以开始编写简单的Shell脚本来自动化日常任务。随着实践的深入，你可以学习更高级的Shell脚本编程技巧，如正则表达式、进程控制、信号处理等。
+
+Happy scripting! 🚀
+</code></pre>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Shell/" rel="tag"># Shell</a>
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B/" rel="tag"># 脚本编程</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/08/24/Mac-Python%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%EF%BC%9A%E7%A6%BB%E7%BA%BF%E8%AF%AD%E9%9F%B3%E5%94%A4%E9%86%92%E4%B8%8E%E8%AF%86%E5%88%AB%E5%AE%9E%E6%88%98/" rel="prev" title="Mac+Python零基础入门：离线语音唤醒与识别实战">
+                  <i class="fa fa-angle-left"></i> Mac+Python零基础入门：离线语音唤醒与识别实战
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Ding</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
