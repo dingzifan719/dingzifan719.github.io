@@ -27,7 +27,7 @@
 <meta property="og:description" content="Shell脚本学习基础1. Shell脚本简介Shell是一个命令行解释器，它为用户提供了一个向Linux内核发送请求以便运行程序的界面系统级程序。Shell脚本是一种为Shell编写的脚本程序，类似于Windows下的批处理文件。 Shell脚本的优点：  自动化日常任务 批处理文件操作 快速原型开发 系统管理和维护  常见的Shell类型：  Bash (Bourne Again SHell)">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-03-05T12:43:55.000Z">
-<meta property="article:modified_time" content="2026-03-05T12:45:29.039Z">
+<meta property="article:modified_time" content="2026-03-05T12:55:07.837Z">
 <meta property="article:author" content="Ding">
 <meta property="article:tag" content="Shell">
 <meta property="article:tag" content="Linux">
@@ -123,7 +123,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell%E8%84%9A%E6%9C%AC%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">Shell脚本学习基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Shell%E8%84%9A%E6%9C%AC%E7%AE%80%E4%BB%8B"><span class="nav-number">1.1.</span> <span class="nav-text">1. Shell脚本简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%AC%AC%E4%B8%80%E4%B8%AAShell%E8%84%9A%E6%9C%AC"><span class="nav-number">1.2.</span> <span class="nav-text">2. 第一个Shell脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%84%9A%E6%9C%AC%E6%96%87%E4%BB%B6"><span class="nav-number">1.2.1.</span> <span class="nav-text">创建脚本文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Shell%E5%8F%98%E9%87%8F"><span class="nav-number">1.3.</span> <span class="nav-text">3. Shell变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E5%AE%9A%E4%B9%89"><span class="nav-number">1.3.1.</span> <span class="nav-text">变量定义</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell%E8%84%9A%E6%9C%AC%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">Shell脚本学习基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Shell%E8%84%9A%E6%9C%AC%E7%AE%80%E4%BB%8B"><span class="nav-number">1.1.</span> <span class="nav-text">1. Shell脚本简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%AC%AC%E4%B8%80%E4%B8%AAShell%E8%84%9A%E6%9C%AC"><span class="nav-number">1.2.</span> <span class="nav-text">2. 第一个Shell脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%84%9A%E6%9C%AC%E6%96%87%E4%BB%B6"><span class="nav-number">1.2.1.</span> <span class="nav-text">创建脚本文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Shell%E5%8F%98%E9%87%8F"><span class="nav-number">1.3.</span> <span class="nav-text">3. Shell变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E5%AE%9A%E4%B9%89"><span class="nav-number">1.3.1.</span> <span class="nav-text">变量定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">1.3.2.</span> <span class="nav-text">环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%8D%E7%BD%AE%E5%8F%82%E6%95%B0%E5%8F%98%E9%87%8F"><span class="nav-number">1.3.3.</span> <span class="nav-text">位置参数变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Shell%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.4.</span> <span class="nav-text">4. Shell基本运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.4.1.</span> <span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.4.2.</span> <span class="nav-text">关系运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.4.3.</span> <span class="nav-text">字符串运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%B5%8B%E8%AF%95%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.4.4.</span> <span class="nav-text">文件测试运算符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Shell%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.5.</span> <span class="nav-text">5. Shell条件语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#if%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.5.1.</span> <span class="nav-text">if语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#case%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.5.2.</span> <span class="nav-text">case语句</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Shell%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.6.</span> <span class="nav-text">6. Shell循环语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#for%E5%BE%AA%E7%8E%AF"><span class="nav-number">1.6.1.</span> <span class="nav-text">for循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#while%E5%BE%AA%E7%8E%AF"><span class="nav-number">1.6.2.</span> <span class="nav-text">while循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#until%E5%BE%AA%E7%8E%AF"><span class="nav-number">1.6.3.</span> <span class="nav-text">until循环</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Shell%E5%87%BD%E6%95%B0"><span class="nav-number">1.7.</span> <span class="nav-text">7. Shell函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89%E5%92%8C%E8%B0%83%E7%94%A8"><span class="nav-number">1.7.1.</span> <span class="nav-text">函数定义和调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%A6%E8%BF%94%E5%9B%9E%E5%80%BC%E7%9A%84%E5%87%BD%E6%95%B0"><span class="nav-number">1.7.2.</span> <span class="nav-text">带返回值的函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-%E5%B8%B8%E8%A7%81Shell%E5%91%BD%E4%BB%A4"><span class="nav-number">1.8.</span> <span class="nav-text">8. 常见Shell命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C"><span class="nav-number">1.8.1.</span> <span class="nav-text">文件和目录操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF"><span class="nav-number">1.8.2.</span> <span class="nav-text">系统信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-Shell%E8%84%9A%E6%9C%AC%E8%B0%83%E8%AF%95"><span class="nav-number">1.9.</span> <span class="nav-text">9. Shell脚本调试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E8%AF%95%E9%80%89%E9%A1%B9"><span class="nav-number">1.9.1.</span> <span class="nav-text">调试选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E8%84%9A%E6%9C%AC%E4%B8%AD%E6%B7%BB%E5%8A%A0%E8%B0%83%E8%AF%95%E4%BF%A1%E6%81%AF"><span class="nav-number">1.9.2.</span> <span class="nav-text">在脚本中添加调试信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-%E8%84%9A%E6%9C%AC%E7%A4%BA%E4%BE%8B%EF%BC%9A%E8%87%AA%E5%8A%A8%E5%A4%87%E4%BB%BD"><span class="nav-number">1.10.</span> <span class="nav-text">10. 脚本示例：自动备份</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.11.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -198,7 +198,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2026-03-05 20:43:55 / 修改时间：20:45:29" itemprop="dateCreated datePublished" datetime="2026-03-05T20:43:55+08:00">2026-03-05</time>
+      <time title="创建时间：2026-03-05 20:43:55 / 修改时间：20:55:07" itemprop="dateCreated datePublished" datetime="2026-03-05T20:43:55+08:00">2026-03-05</time>
     </span>
 
   
@@ -232,474 +232,58 @@
 <li>执行脚本：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./hello.sh</span><br></pre></td></tr></table></figure>
 或者<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash hello.sh</span><br></pre></td></tr></table></figure></li>
 </ol>
-<h2 id="3-Shell变量"><a href="#3-Shell变量" class="headerlink" title="3. Shell变量"></a>3. Shell变量</h2><h3 id="变量定义"><a href="#变量定义" class="headerlink" title="变量定义"></a>变量定义</h3><pre><code class="language-bash"># 定义变量，等号两边不能有空格
-name=&quot;Shell脚本&quot;
-age=20
+<h2 id="3-Shell变量"><a href="#3-Shell变量" class="headerlink" title="3. Shell变量"></a>3. Shell变量</h2><h3 id="变量定义"><a href="#变量定义" class="headerlink" title="变量定义"></a>变量定义</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义变量，等号两边不能有空格</span></span><br><span class="line">name=<span class="string">&quot;Shell脚本&quot;</span></span><br><span class="line">age=20</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用变量</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;变量name的值：<span class="variable">$name</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;变量age的值：<span class="variable">$&#123;age&#125;</span>岁&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 只读变量</span></span><br><span class="line"><span class="built_in">readonly</span> PI=3.14159</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除变量（不能删除只读变量）</span></span><br><span class="line"><span class="built_in">unset</span> age</span><br></pre></td></tr></table></figure>
 
-# 使用变量
-echo &quot;变量name的值：$name&quot;
-echo &quot;变量age的值：$&#123;age&#125;岁&quot;
+<h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看所有环境变量</span></span><br><span class="line"><span class="built_in">env</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看特定环境变量</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$HOME</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$USER</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置环境变量</span></span><br><span class="line"><span class="built_in">export</span> MY_VAR=<span class="string">&quot;my value&quot;</span></span><br></pre></td></tr></table></figure>
 
-# 只读变量
-readonly PI=3.14159
+<h3 id="位置参数变量"><a href="#位置参数变量" class="headerlink" title="位置参数变量"></a>位置参数变量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># 脚本名称：params.sh</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;脚本名称：<span class="variable">$0</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;第一个参数：<span class="variable">$1</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;第二个参数：<span class="variable">$2</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;参数个数：<span class="variable">$#</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;所有参数：<span class="variable">$@</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;所有参数（作为一个字符串）：$*&quot;</span></span><br><span class="line"></span><br><span class="line">执行：bash</span><br><span class="line">./params.sh arg1 arg2</span><br></pre></td></tr></table></figure>
 
-# 删除变量（不能删除只读变量）
-unset age
+<h2 id="4-Shell基本运算符"><a href="#4-Shell基本运算符" class="headerlink" title="4. Shell基本运算符"></a>4. Shell基本运算符</h2><h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">a=10</span><br><span class="line">b=20</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加法</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;a + b = <span class="subst">$((a + b)</span>)&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;a + b = <span class="subst">$(expr $a + $b)</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 减法</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;a - b = <span class="subst">$((a - b)</span>)&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 乘法（注意expr需要转义*）</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;a * b = <span class="subst">$((a * b)</span>)&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;a * b = <span class="subst">$(expr $a \* $b)</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 除法</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;b / a = <span class="subst">$((b / a)</span>)&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 取余</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;b % a = <span class="subst">$((b % a)</span>)&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 赋值</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;a = <span class="variable">$a</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 相等</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;a == b ? <span class="subst">$((a == b)</span>)&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 不相等</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;a != b ? <span class="subst">$((a != b)</span>)&quot;</span></span><br></pre></td></tr></table></figure>
 
-### 环境变量
+<h3 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">a=10</span><br><span class="line">b=20</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$a</span> -eq <span class="variable">$b</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;a 等于 b&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;a 不等于 b&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$a</span> -ne <span class="variable">$b</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;a 不等于 b&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$a</span> -gt <span class="variable">$b</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;a 大于 b&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;a 不大于 b&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$a</span> -lt <span class="variable">$b</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;a 小于 b&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$a</span> -ge <span class="variable">$b</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;a 大于等于 b&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$a</span> -le <span class="variable">$b</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;a 小于等于 b&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
 
-```bash
-# 查看所有环境变量
-env
+<h3 id="字符串运算符"><a href="#字符串运算符" class="headerlink" title="字符串运算符"></a>字符串运算符</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">a=<span class="string">&quot;hello&quot;</span></span><br><span class="line">b=<span class="string">&quot;world&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$a</span> = <span class="variable">$b</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;a 等于 b&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;a 不等于 b&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$a</span> != <span class="variable">$b</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;a 不等于 b&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -z <span class="variable">$a</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;a 是空字符串&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;a 不是空字符串&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -n <span class="variable">$a</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;a 不是空字符串&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$a</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;a 不是空&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
 
-# 查看特定环境变量
-echo $PATH
-echo $HOME
-echo $USER
+<h3 id="文件测试运算符"><a href="#文件测试运算符" class="headerlink" title="文件测试运算符"></a>文件测试运算符</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">file=<span class="string">&quot;test.txt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -e <span class="variable">$file</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;文件存在&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;文件不存在&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -f <span class="variable">$file</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;是普通文件&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -d <span class="variable">$file</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;是目录&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -r <span class="variable">$file</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;文件可读&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -w <span class="variable">$file</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;文件可写&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -x <span class="variable">$file</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;文件可执行&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
 
-# 设置环境变量
-export MY_VAR=&quot;my value&quot;
+<h2 id="5-Shell条件语句"><a href="#5-Shell条件语句" class="headerlink" title="5. Shell条件语句"></a>5. Shell条件语句</h2><h3 id="if语句"><a href="#if语句" class="headerlink" title="if语句"></a>if语句</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">read</span> -p <span class="string">&quot;请输入一个数字：&quot;</span> num</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$num</span> -gt 0 ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;这是一个正数&quot;</span></span><br><span class="line"><span class="keyword">elif</span> [ <span class="variable">$num</span> -lt 0 ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;这是一个负数&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;这是零&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
 
-### 位置参数变量
+<h3 id="case语句"><a href="#case语句" class="headerlink" title="case语句"></a>case语句</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">read</span> -p <span class="string">&quot;请选择一个选项(1-3)：&quot;</span> choice</span><br><span class="line"></span><br><span class="line"><span class="keyword">case</span> <span class="variable">$choice</span> <span class="keyword">in</span></span><br><span class="line">    1)</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;你选择了选项1&quot;</span></span><br><span class="line">        ;;</span><br><span class="line">    2)</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;你选择了选项2&quot;</span></span><br><span class="line">        ;;</span><br><span class="line">    3)</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;你选择了选项3&quot;</span></span><br><span class="line">        ;;</span><br><span class="line">    *)</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;无效选项&quot;</span></span><br><span class="line">        ;;</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
 
-```bash
-#!/bin/bash
-# 脚本名称：params.sh
-echo &quot;脚本名称：$0&quot;
-echo &quot;第一个参数：$1&quot;
-echo &quot;第二个参数：$2&quot;
-echo &quot;参数个数：$#&quot;
-echo &quot;所有参数：$@&quot;
-echo &quot;所有参数（作为一个字符串）：$*&quot;
+<h2 id="6-Shell循环语句"><a href="#6-Shell循环语句" class="headerlink" title="6. Shell循环语句"></a>6. Shell循环语句</h2><h3 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历数字</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;遍历数字：&quot;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;1..5&#125;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;数字：<span class="variable">$i</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历列表</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;\n遍历列表：&quot;</span></span><br><span class="line">fruits=(<span class="string">&quot;apple&quot;</span> <span class="string">&quot;banana&quot;</span> <span class="string">&quot;orange&quot;</span> <span class="string">&quot;grape&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> fruit <span class="keyword">in</span> <span class="string">&quot;<span class="variable">$&#123;fruits[@]&#125;</span>&quot;</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;水果：<span class="variable">$fruit</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># C风格for循环</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;\nC风格for循环：&quot;</span></span><br><span class="line"><span class="keyword">for</span> ((i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++))</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;i = <span class="variable">$i</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 
-执行：bash
-./params.sh arg1 arg2
+<h3 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">count=1</span><br><span class="line"><span class="keyword">while</span> [ <span class="variable">$count</span> -le 5 ]</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;计数：<span class="variable">$count</span>&quot;</span></span><br><span class="line">    count=$((count + <span class="number">1</span>))</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 无限循环（按Ctrl+C退出）</span></span><br><span class="line"><span class="comment"># while true</span></span><br><span class="line"><span class="comment"># do</span></span><br><span class="line"><span class="comment">#     echo &quot;这是一个无限循环&quot;</span></span><br><span class="line"><span class="comment">#     sleep 1</span></span><br><span class="line"><span class="comment"># done</span></span><br></pre></td></tr></table></figure>
 
-## 4. Shell基本运算符
+<h3 id="until循环"><a href="#until循环" class="headerlink" title="until循环"></a>until循环</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">count=1</span><br><span class="line"><span class="keyword">until</span> [ <span class="variable">$count</span> -gt 5 ]</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;计数：<span class="variable">$count</span>&quot;</span></span><br><span class="line">    count=$((count + <span class="number">1</span>))</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 
-### 算术运算符
+<h2 id="7-Shell函数"><a href="#7-Shell函数" class="headerlink" title="7. Shell函数"></a>7. Shell函数</h2><h3 id="函数定义和调用"><a href="#函数定义和调用" class="headerlink" title="函数定义和调用"></a>函数定义和调用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义函数</span></span><br><span class="line"><span class="function"><span class="title">greeting</span></span>() &#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Hello, <span class="variable">$1</span>!&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;当前时间：<span class="subst">$(date)</span>&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用函数</span></span><br><span class="line">greeting <span class="string">&quot;Shell&quot;</span></span><br></pre></td></tr></table></figure>
 
-```bash
-#!/bin/bash
+<h3 id="带返回值的函数"><a href="#带返回值的函数" class="headerlink" title="带返回值的函数"></a>带返回值的函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义带返回值的函数</span></span><br><span class="line"><span class="function"><span class="title">add</span></span>() &#123;</span><br><span class="line">    <span class="built_in">local</span> <span class="built_in">sum</span>=$(( <span class="variable">$1</span> + <span class="variable">$2</span> ))</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$sum</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用函数并获取返回值</span></span><br><span class="line">result=$(add 10 20)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;10 + 20 = <span class="variable">$result</span>&quot;</span></span><br></pre></td></tr></table></figure>
 
-a=10
-b=20
+<h2 id="8-常见Shell命令"><a href="#8-常见Shell命令" class="headerlink" title="8. 常见Shell命令"></a>8. 常见Shell命令</h2><h3 id="文件和目录操作"><a href="#文件和目录操作" class="headerlink" title="文件和目录操作"></a>文件和目录操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列出文件和目录</span></span><br><span class="line"><span class="built_in">ls</span> -la</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建目录</span></span><br><span class="line"><span class="built_in">mkdir</span> dir1 dir2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建空文件</span></span><br><span class="line"><span class="built_in">touch</span> file.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 复制文件或目录</span></span><br><span class="line"><span class="built_in">cp</span> file.txt file_copy.txt</span><br><span class="line"><span class="built_in">cp</span> -r dir1 dir1_copy</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移动或重命名文件/目录</span></span><br><span class="line"><span class="built_in">mv</span> file.txt new_file.txt</span><br><span class="line"><span class="built_in">mv</span> dir1 new_dir</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除文件</span></span><br><span class="line"><span class="built_in">rm</span> file.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除目录</span></span><br><span class="line"><span class="built_in">rm</span> -rf dir1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看文件内容</span></span><br><span class="line"><span class="built_in">cat</span> file.txt</span><br><span class="line"><span class="built_in">head</span> -5 file.txt</span><br><span class="line"> <span class="built_in">tail</span> -5 file.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 搜索文件内容</span></span><br><span class="line">grep <span class="string">&quot;pattern&quot;</span> file.txt</span><br></pre></td></tr></table></figure>
 
-# 加法
-echo &quot;a + b = $((a + b))&quot;
-echo &quot;a + b = $(expr $a + $b)&quot;
+<h3 id="系统信息"><a href="#系统信息" class="headerlink" title="系统信息"></a>系统信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看系统版本</span></span><br><span class="line"><span class="built_in">uname</span> -a</span><br><span class="line"><span class="built_in">cat</span> /etc/os-release</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看内存使用情况</span></span><br><span class="line">free -h</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看磁盘使用情况</span></span><br><span class="line"><span class="built_in">df</span> -h</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看进程</span></span><br><span class="line">ps aux</span><br><span class="line">top</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看网络连接</span></span><br><span class="line">netstat -tuln</span><br><span class="line">ss -tuln</span><br></pre></td></tr></table></figure>
 
-# 减法
-echo &quot;a - b = $((a - b))&quot;
+<h2 id="9-Shell脚本调试"><a href="#9-Shell脚本调试" class="headerlink" title="9. Shell脚本调试"></a>9. Shell脚本调试</h2><h3 id="调试选项"><a href="#调试选项" class="headerlink" title="调试选项"></a>调试选项</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 执行时显示命令</span></span><br><span class="line">bash -x script.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查语法错误</span></span><br><span class="line">bash -n script.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入调试模式</span></span><br><span class="line">bash -v script.sh</span><br></pre></td></tr></table></figure>
 
-# 乘法（注意expr需要转义*）
-echo &quot;a * b = $((a * b))&quot;
-echo &quot;a * b = $(expr $a \* $b)&quot;
+<h3 id="在脚本中添加调试信息"><a href="#在脚本中添加调试信息" class="headerlink" title="在脚本中添加调试信息"></a>在脚本中添加调试信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置调试模式</span></span><br><span class="line"><span class="built_in">set</span> -x</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;调试模式开启&quot;</span></span><br><span class="line">name=<span class="string">&quot;Shell&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;变量name：<span class="variable">$name</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭调试模式</span></span><br><span class="line"><span class="built_in">set</span> +x</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;调试模式关闭&quot;</span></span><br></pre></td></tr></table></figure>
 
-# 除法
-echo &quot;b / a = $((b / a))&quot;
+<h2 id="10-脚本示例：自动备份"><a href="#10-脚本示例：自动备份" class="headerlink" title="10. 脚本示例：自动备份"></a>10. 脚本示例：自动备份</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义备份目录和源目录</span></span><br><span class="line">BACKUP_DIR=<span class="string">&quot;/backup&quot;</span></span><br><span class="line">SOURCE_DIR=<span class="string">&quot;/home/user/documents&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建备份目录（如果不存在）</span></span><br><span class="line"><span class="built_in">mkdir</span> -p <span class="variable">$BACKUP_DIR</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成备份文件名（包含日期）</span></span><br><span class="line">BACKUP_FILE=<span class="string">&quot;<span class="variable">$BACKUP_DIR</span>/documents_<span class="subst">$(date +%Y%m%d_%H%M%S)</span>.tar.gz&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行备份</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;开始备份...&quot;</span></span><br><span class="line">tar -czf <span class="variable">$BACKUP_FILE</span> <span class="variable">$SOURCE_DIR</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查备份是否成功</span></span><br><span class="line"><span class="keyword">if</span> [ $? -eq 0 ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;备份成功！备份文件：<span class="variable">$BACKUP_FILE</span>&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;备份失败！&quot;</span></span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 清理7天前的备份文件</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;清理旧备份...&quot;</span></span><br><span class="line">find <span class="variable">$BACKUP_DIR</span> -name <span class="string">&quot;documents_*.tar.gz&quot;</span> -<span class="built_in">type</span> f -mtime +7 -delete</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;备份任务完成！&quot;</span></span><br></pre></td></tr></table></figure>
 
-# 取余
-echo &quot;b % a = $((b % a))&quot;
-
-# 赋值
-echo &quot;a = $a&quot;
-
-# 相等
-echo &quot;a == b ? $((a == b))&quot;
-
-# 不相等
-echo &quot;a != b ? $((a != b))&quot;
-
-### 关系运算符
-
-```bash
-#!/bin/bash
-
-a=10
-b=20
-
-if [ $a -eq $b ]
-then
-    echo &quot;a 等于 b&quot;
-else
-    echo &quot;a 不等于 b&quot;
-fi
-
-if [ $a -ne $b ]
-then
-    echo &quot;a 不等于 b&quot;
-fi
-
-if [ $a -gt $b ]
-then
-    echo &quot;a 大于 b&quot;
-else
-    echo &quot;a 不大于 b&quot;
-fi
-
-if [ $a -lt $b ]
-then
-    echo &quot;a 小于 b&quot;
-fi
-
-if [ $a -ge $b ]
-then
-    echo &quot;a 大于等于 b&quot;
-fi
-
-if [ $a -le $b ]
-then
-    echo &quot;a 小于等于 b&quot;
-fi
-
-### 字符串运算符
-
-```bash
-#!/bin/bash
-
-a=&quot;hello&quot;
-b=&quot;world&quot;
-
-if [ $a = $b ]
-then
-    echo &quot;a 等于 b&quot;
-else
-    echo &quot;a 不等于 b&quot;
-fi
-
-if [ $a != $b ]
-then
-    echo &quot;a 不等于 b&quot;
-fi
-
-if [ -z $a ]
-then
-    echo &quot;a 是空字符串&quot;
-else
-    echo &quot;a 不是空字符串&quot;
-fi
-
-if [ -n $a ]
-then
-    echo &quot;a 不是空字符串&quot;
-fi
-
-if [ $a ]
-then
-    echo &quot;a 不是空&quot;
-fi
-
-### 文件测试运算符
-
-```bash
-#!/bin/bash
-
-file=&quot;test.txt&quot;
-
-if [ -e $file ]
-then
-    echo &quot;文件存在&quot;
-else
-    echo &quot;文件不存在&quot;
-fi
-
-if [ -f $file ]
-then
-    echo &quot;是普通文件&quot;
-fi
-
-if [ -d $file ]
-then
-    echo &quot;是目录&quot;
-fi
-
-if [ -r $file ]
-then
-    echo &quot;文件可读&quot;
-fi
-
-if [ -w $file ]
-then
-    echo &quot;文件可写&quot;
-fi
-
-if [ -x $file ]
-then
-    echo &quot;文件可执行&quot;
-fi
-
-## 5. Shell条件语句
-
-### if语句
-
-```bash
-#!/bin/bash
-
-read -p &quot;请输入一个数字：&quot; num
-
-if [ $num -gt 0 ]
-then
-    echo &quot;这是一个正数&quot;
-elif [ $num -lt 0 ]
-then
-    echo &quot;这是一个负数&quot;
-else
-    echo &quot;这是零&quot;
-fi
-
-### case语句
-
-```bash
-#!/bin/bash
-
-read -p &quot;请选择一个选项(1-3)：&quot; choice
-
-case $choice in
-    1)
-        echo &quot;你选择了选项1&quot;
-        ;;
-    2)
-        echo &quot;你选择了选项2&quot;
-        ;;
-    3)
-        echo &quot;你选择了选项3&quot;
-        ;;
-    *)
-        echo &quot;无效选项&quot;
-        ;;
-esac
-
-## 6. Shell循环语句
-
-### for循环
-
-```bash
-#!/bin/bash
-
-# 遍历数字
-echo &quot;遍历数字：&quot;
-for i in &#123;1..5&#125;
-do
-    echo &quot;数字：$i&quot;
-done
-
-# 遍历列表
-echo &quot;\n遍历列表：&quot;
-fruits=(&quot;apple&quot; &quot;banana&quot; &quot;orange&quot; &quot;grape&quot;)
-for fruit in &quot;$&#123;fruits[@]&#125;&quot;
-do
-    echo &quot;水果：$fruit&quot;
-done
-
-# C风格for循环
-echo &quot;\nC风格for循环：&quot;
-for ((i=0; i&lt;5; i++))
-do
-    echo &quot;i = $i&quot;
-done
-
-### while循环
-
-```bash
-#!/bin/bash
-
-count=1
-while [ $count -le 5 ]
-do
-    echo &quot;计数：$count&quot;
-    count=$((count + 1))
-done
-
-# 无限循环（按Ctrl+C退出）
-# while true
-# do
-#     echo &quot;这是一个无限循环&quot;
-#     sleep 1
-# done
-
-### until循环
-
-```bash
-#!/bin/bash
-
-count=1
-until [ $count -gt 5 ]
-do
-    echo &quot;计数：$count&quot;
-    count=$((count + 1))
-done
-
-## 7. Shell函数
-
-### 函数定义和调用
-
-```bash
-#!/bin/bash
-
-# 定义函数
-greeting() &#123;
-    echo &quot;Hello, $1!&quot;
-    echo &quot;当前时间：$(date)&quot;
-&#125;
-
-# 调用函数
-greeting &quot;Shell&quot;
-
-### 带返回值的函数
-
-```bash
-#!/bin/bash
-
-# 定义带返回值的函数
-add() &#123;
-    local sum=$(( $1 + $2 ))
-    echo $sum
-&#125;
-
-# 调用函数并获取返回值
-result=$(add 10 20)
-echo &quot;10 + 20 = $result&quot;
-
-## 8. 常见Shell命令
-
-### 文件和目录操作
-
-```bash
-# 列出文件和目录
-ls -la
-
-# 创建目录
-mkdir dir1 dir2
-
-# 创建空文件
-touch file.txt
-
-# 复制文件或目录
-cp file.txt file_copy.txt
-cp -r dir1 dir1_copy
-
-# 移动或重命名文件/目录
-mv file.txt new_file.txt
-mv dir1 new_dir
-
-# 删除文件
-rm file.txt
-
-# 删除目录
-rm -rf dir1
-
-# 查看文件内容
-cat file.txt
-head -5 file.txt
- tail -5 file.txt
-
-# 搜索文件内容
-grep &quot;pattern&quot; file.txt
-
-### 系统信息
-
-```bash
-# 查看系统版本
-uname -a
-cat /etc/os-release
-
-# 查看内存使用情况
-free -h
-
-# 查看磁盘使用情况
-df -h
-
-# 查看进程
-ps aux
-top
-
-# 查看网络连接
-netstat -tuln
-ss -tuln
-
-## 9. Shell脚本调试
-
-### 调试选项
-
-```bash
-# 执行时显示命令
-bash -x script.sh
-
-# 检查语法错误
-bash -n script.sh
-
-# 进入调试模式
-bash -v script.sh
-
-### 在脚本中添加调试信息
-
-```bash
-#!/bin/bash
-
-# 设置调试模式
-set -x
-
-echo &quot;调试模式开启&quot;
-name=&quot;Shell&quot;
-echo &quot;变量name：$name&quot;
-
-# 关闭调试模式
-set +x
-
-echo &quot;调试模式关闭&quot;
-
-## 10. 脚本示例：自动备份
-
-```bash
-#!/bin/bash
-
-# 定义备份目录和源目录
-BACKUP_DIR=&quot;/backup&quot;
-SOURCE_DIR=&quot;/home/user/documents&quot;
-
-# 创建备份目录（如果不存在）
-mkdir -p $BACKUP_DIR
-
-# 生成备份文件名（包含日期）
-BACKUP_FILE=&quot;$BACKUP_DIR/documents_$(date +%Y%m%d_%H%M%S).tar.gz&quot;
-
-# 执行备份
-echo &quot;开始备份...&quot;
-tar -czf $BACKUP_FILE $SOURCE_DIR
-
-# 检查备份是否成功
-if [ $? -eq 0 ]
-then
-    echo &quot;备份成功！备份文件：$BACKUP_FILE&quot;
-else
-    echo &quot;备份失败！&quot;
-    exit 1
-fi
-
-# 清理7天前的备份文件
-echo &quot;清理旧备份...&quot;
-find $BACKUP_DIR -name &quot;documents_*.tar.gz&quot; -type f -mtime +7 -delete
-
-echo &quot;备份任务完成！&quot;
-
-## 总结
-
-本教程介绍了Shell脚本的基础知识，包括：
-- Shell脚本的基本概念和创建方法
-- 变量定义和使用
-- 基本运算符（算术、关系、字符串、文件测试）
-- 条件语句（if-elif-else、case）
-- 循环语句（for、while、until）
-- 函数定义和调用
-- 常见Shell命令
-- 脚本调试技巧
-- 一个自动备份的脚本示例
-
-通过学习这些基础知识，你可以开始编写简单的Shell脚本来自动化日常任务。随着实践的深入，你可以学习更高级的Shell脚本编程技巧，如正则表达式、进程控制、信号处理等。
-
-Happy scripting! 🚀
-</code></pre>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本教程介绍了Shell脚本的基础知识，包括：</p>
+<ul>
+<li>Shell脚本的基本概念和创建方法</li>
+<li>变量定义和使用</li>
+<li>基本运算符（算术、关系、字符串、文件测试）</li>
+<li>条件语句（if-elif-else、case）</li>
+<li>循环语句（for、while、until）</li>
+<li>函数定义和调用</li>
+<li>常见Shell命令</li>
+<li>脚本调试技巧</li>
+<li>一个自动备份的脚本示例</li>
+</ul>
+<p>通过学习这些基础知识，你可以开始编写简单的Shell脚本来自动化日常任务。随着实践的深入，你可以学习更高级的Shell脚本编程技巧，如正则表达式、进程控制、信号处理等。</p>
+<p>Happy scripting! 🚀</p>
 
     </div>
 
