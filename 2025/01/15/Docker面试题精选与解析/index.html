@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"dingzifan719.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.24.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="1. Docker基础概念1.1 什么是Docker？问题：请解释什么是Docker，以及它解决了什么问题？ 解析： Docker是一个开源的容器化平台，它允许开发者将应用程序及其依赖打包到一个轻量级、可移植的容器中，从而实现快速部署和运行。 Docker解决的核心问题： 123456789101112131415161718192021222324252627282930313233343536">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker面试题精选与解析">
+<meta property="og:url" content="https://dingzifan719.github.io/2025/01/15/Docker%E9%9D%A2%E8%AF%95%E9%A2%98%E7%B2%BE%E9%80%89%E4%B8%8E%E8%A7%A3%E6%9E%90/index.html">
+<meta property="og:site_name" content="叮">
+<meta property="og:description" content="1. Docker基础概念1.1 什么是Docker？问题：请解释什么是Docker，以及它解决了什么问题？ 解析： Docker是一个开源的容器化平台，它允许开发者将应用程序及其依赖打包到一个轻量级、可移植的容器中，从而实现快速部署和运行。 Docker解决的核心问题： 123456789101112131415161718192021222324252627282930313233343536">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-01-15T02:00:00.000Z">
+<meta property="article:modified_time" content="2026-03-06T15:44:55.534Z">
+<meta property="article:author" content="Ding">
+<meta property="article:tag" content="面试">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="容器化">
+<meta property="article:tag" content="DevOps">
+<meta property="article:tag" content="微服务">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://dingzifan719.github.io/2025/01/15/Docker%E9%9D%A2%E8%AF%95%E9%A2%98%E7%B2%BE%E9%80%89%E4%B8%8E%E8%A7%A3%E6%9E%90/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://dingzifan719.github.io/2025/01/15/Docker%E9%9D%A2%E8%AF%95%E9%A2%98%E7%B2%BE%E9%80%89%E4%B8%8E%E8%A7%A3%E6%9E%90/","path":"2025/01/15/Docker面试题精选与解析/","title":"Docker面试题精选与解析"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Docker面试题精选与解析 | 叮</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">叮</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Docker%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">1. Docker基础概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E4%BB%80%E4%B9%88%E6%98%AFDocker%EF%BC%9F"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 什么是Docker？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E5%AE%B9%E5%99%A8-vs-%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 容器 vs 虚拟机</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Docker%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">2. Docker核心组件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Docker%E6%9E%B6%E6%9E%84"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Docker架构</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Ding</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dingzifan719.github.io/2025/01/15/Docker%E9%9D%A2%E8%AF%95%E9%A2%98%E7%B2%BE%E9%80%89%E4%B8%8E%E8%A7%A3%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ding">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叮">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Docker面试题精选与解析 | 叮">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Docker面试题精选与解析
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-01-15 10:00:00" itemprop="dateCreated datePublished" datetime="2025-01-15T10:00:00+08:00">2025-01-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-03-06 23:44:55" itemprop="dateModified" datetime="2026-03-06T23:44:55+08:00">2026-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="1-Docker基础概念"><a href="#1-Docker基础概念" class="headerlink" title="1. Docker基础概念"></a>1. Docker基础概念</h2><h3 id="1-1-什么是Docker？"><a href="#1-1-什么是Docker？" class="headerlink" title="1.1 什么是Docker？"></a>1.1 什么是Docker？</h3><p><strong>问题</strong>：请解释什么是Docker，以及它解决了什么问题？</p>
+<p><strong>解析</strong>：</p>
+<p><strong>Docker</strong>是一个开源的容器化平台，它允许开发者将应用程序及其依赖打包到一个轻量级、可移植的容器中，从而实现快速部署和运行。</p>
+<p><strong>Docker解决的核心问题</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">传统部署方式的问题</span><br><span class="line">│</span><br><span class="line">├── 环境不一致问题</span><br><span class="line">│   ├── 开发环境：Windows/Mac + Python 3.8</span><br><span class="line">│   ├── 测试环境：Linux + Python 3.7</span><br><span class="line">│   └── 生产环境：Linux + Python 3.6</span><br><span class="line">│   └── 结果：&quot;在我的机器上能运行&quot;</span><br><span class="line">│</span><br><span class="line">├── 依赖冲突问题</span><br><span class="line">│   ├── 项目A需要：Redis 5.0 + Node.js 14</span><br><span class="line">│   ├── 项目B需要：Redis 6.0 + Node.js 16</span><br><span class="line">│   └── 同一台服务器无法同时满足</span><br><span class="line">│</span><br><span class="line">├── 资源利用率低</span><br><span class="line">│   ├── 每个应用都需要独立的虚拟机</span><br><span class="line">│   ├── 每个虚拟机都需要完整的操作系统</span><br><span class="line">│   └── 内存和CPU资源浪费严重</span><br><span class="line">│</span><br><span class="line">└── 部署复杂</span><br><span class="line">    ├── 手动配置服务器环境</span><br><span class="line">    ├── 手动安装依赖</span><br><span class="line">    └── 容易出错且难以回滚</span><br><span class="line"></span><br><span class="line">Docker的解决方案</span><br><span class="line">│</span><br><span class="line">├── 环境一致性</span><br><span class="line">│   ├── 开发、测试、生产使用相同的容器</span><br><span class="line">│   ├── 容器内包含所有依赖</span><br><span class="line">│   └── 确保&quot;一次构建，到处运行&quot;</span><br><span class="line">│</span><br><span class="line">├── 隔离性</span><br><span class="line">│   ├── 每个容器独立运行</span><br><span class="line">│   ├── 容器间互不干扰</span><br><span class="line">│   └── 同一主机可运行多个不同版本的服务</span><br><span class="line">│</span><br><span class="line">├── 轻量级</span><br><span class="line">│   ├── 容器共享主机内核</span><br><span class="line">│   ├── 无需完整的操作系统</span><br><span class="line">│   └── 启动速度快（秒级）</span><br><span class="line">│</span><br><span class="line">└── 易于管理</span><br><span class="line">    ├── 版本控制和回滚</span><br><span class="line">    ├── 自动化部署</span><br><span class="line">    └── 与CI/CD流程集成</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-容器-vs-虚拟机"><a href="#1-2-容器-vs-虚拟机" class="headerlink" title="1.2 容器 vs 虚拟机"></a>1.2 容器 vs 虚拟机</h3><p><strong>问题</strong>：Docker容器和传统虚拟机有什么区别？</p>
+<p><strong>解析</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Docker容器</th>
+<th>虚拟机（VM）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>架构</strong></td>
+<td>共享主机操作系统内核</td>
+<td>每个VM有独立的操作系统</td>
+</tr>
+<tr>
+<td><strong>启动时间</strong></td>
+<td>秒级（通常1-3秒）</td>
+<td>分钟级（通常1-5分钟）</td>
+</tr>
+<tr>
+<td><strong>资源占用</strong></td>
+<td>轻量级（MB级）</td>
+<td>重量级（GB级）</td>
+</tr>
+<tr>
+<td><strong>性能</strong></td>
+<td>接近原生（约95-100%）</td>
+<td>有虚拟化开销（约70-80%）</td>
+</tr>
+<tr>
+<td><strong>隔离性</strong></td>
+<td>进程级隔离</td>
+<td>硬件级隔离</td>
+</tr>
+<tr>
+<td><strong>密度</strong></td>
+<td>单主机可运行数百个容器</td>
+<td>单主机通常运行10-50个VM</td>
+</tr>
+<tr>
+<td><strong>管理复杂度</strong></td>
+<td>相对简单</td>
+<td>相对复杂</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>微服务、DevOps、CI&#x2F;CD</td>
+<td>传统应用、多操作系统需求</td>
+</tr>
+</tbody></table>
+<p><strong>架构对比图</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">虚拟机架构（Virtual Machine Architecture）</span><br><span class="line">┌─────────────────────────────────────────────────────────────┐</span><br><span class="line">│                         基础设施                            │</span><br><span class="line">│                   (服务器/云主机/PC)                          │</span><br><span class="line">└─────────────────────────────────────────────────────────────┘</span><br><span class="line">                              │</span><br><span class="line">┌─────────────────────────────────────────────────────────────┐</span><br><span class="line">│                      虚拟化层（Hypervisor）                  │</span><br><span class="line">│              (VMware, Hyper-V, KVM, Xen)                     │</span><br><span class="line">└─────────────────────────────────────────────────────────────┘</span><br><span class="line">          │                     │                     │</span><br><span class="line">    ┌──────────┐          ┌──────────┐          ┌──────────┐</span><br><span class="line">    │   VM 1   │          │   VM 2   │          │   VM 3   │</span><br><span class="line">    │┌────────┐│          │┌────────┐│          │┌────────┐│</span><br><span class="line">    ││  应用  ││          ││  应用  ││          ││  应用  ││</span><br><span class="line">    ││ Bin/Lib││          ││ Bin/Lib││          ││ Bin/Lib││</span><br><span class="line">    │├────────┤│          │├────────┤│          │├────────┤│</span><br><span class="line">    ││ Guest  ││          ││ Guest  ││          ││ Guest  ││</span><br><span class="line">    ││   OS   ││          ││   OS   ││          ││   OS   ││</span><br><span class="line">    ││(GB级)  ││          ││(GB级)  ││          ││(GB级)  ││</span><br><span class="line">    │└────────┘│          │└────────┘│          │└────────┘│</span><br><span class="line">    └──────────┘          └──────────┘          └──────────┘</span><br><span class="line"></span><br><span class="line">Docker容器架构（Container Architecture）</span><br><span class="line">┌─────────────────────────────────────────────────────────────┐</span><br><span class="line">│                      基础设施                               │</span><br><span class="line">│                (服务器/云主机/PC)                           │</span><br><span class="line">└─────────────────────────────────────────────────────────────┘</span><br><span class="line">                              │</span><br><span class="line">┌─────────────────────────────────────────────────────────────┐</span><br><span class="line">│                   主机操作系统                              │</span><br><span class="line">│           (Linux, Windows, macOS)                          │</span><br><span class="line">└─────────────────────────────────────────────────────────────┘</span><br><span class="line">                              │</span><br><span class="line">┌─────────────────────────────────────────────────────────────┐</span><br><span class="line">│              Docker引擎（Docker Engine）                    │</span><br><span class="line">└─────────────────────────────────────────────────────────────┘</span><br><span class="line">          │                     │                     │</span><br><span class="line">    ┌──────────┐          ┌──────────┐          ┌──────────┐</span><br><span class="line">    │ Container│          │ Container│          │ Container│</span><br><span class="line">    │    1     │          │    2     │          │    3     │</span><br><span class="line">    │┌────────┐│          │┌────────┐│          │┌────────┐│</span><br><span class="line">    ││  应用  ││          ││  应用  ││          ││  应用  ││</span><br><span class="line">    ││ Bin/Lib││          ││ Bin/Lib││          ││ Bin/Lib││</span><br><span class="line">    ││(MB级)  ││          ││(MB级)  ││          ││(MB级)  ││</span><br><span class="line">    │└────────┘│          │└────────┘│          │└────────┘│</span><br><span class="line">    └──────────┘          └──────────┘          └──────────┘</span><br><span class="line">                              │</span><br><span class="line">                    共享主机操作系统内核</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-Docker核心组件"><a href="#2-Docker核心组件" class="headerlink" title="2. Docker核心组件"></a>2. Docker核心组件</h2><h3 id="2-1-Docker架构"><a href="#2-1-Docker架构" class="headerlink" title="2.1 Docker架构"></a>2.1 Docker架构</h3><p><strong>问题</strong>：Docker的架构是怎样的？各个组件的作用是什么？</p>
+<p><strong>解析</strong>：</p>
+<p><strong>Docker架构图</strong>：</p>
+<pre><code>Docker整体架构
+│
+├── Docker客户端（Docker Client）
+│   ├── 命令行接口（docker CLI）
+│   ├── REST API客户端
+│   └── 与Docker Daemon通信
+│
+├── Docker守护进程（Docker Daemon - dockerd）
+│   ├── 核心功能：
+│   │   ├── 镜像管理（构建、拉取、存储）
+│   │   ├── 容器管理（创建、运行、监控）
+│   │   ├── 网络管理（创建、连接、隔离）
+│   │   ├── 存储管理（Volume、Bind Mount）
+│   │   └── 资源管理（CPU、内存、IO限制）
+│   │
+│   ├── 模块组成：
+│   │   ├── Image Service：镜像服务
+│   │   ├── Container Service：容器服务
+│   │   ├── Network Service：网络服务
+│   │   ├── Volume Service：存储服务
+│   │   └── Execution Driver：执行驱动（runc等）
+│   │
+│   └── 通信接口：
+│       ├── REST API（/var/run/docker.sock）
+│       └── gRPC（内部组件间通信）
+│
+├── Containerd（容器运行时管理）
+│   ├── 从Docker Daemon中分离出的核心容器运行时
+│   ├── 功能：
+│   │   ├── 镜像管理（拉取、推送、存储）
+│   │   ├── 容器生命周期管理
+│   │   └── 快照管理（Snapshot）
+│   ├── 架构：
+│   │   ├── Daemon：containerd服务
+│   │   ├── Client：ctr命令行工具
+│   │   └── API：gRPC接口
+│   └── 标准化：符合OCI（Open Container Initiative）标准
+│
+├── Runc（容器运行时）
+│   ├── 底层的容器执行工具
+│   ├── 功能：
+│   │   ├── 创建容器
+│   │   ├── 配置namespace和cgroup
+│   │   └── 执行容器内的进程
+│   ├── 特点：
+│   │   ├── 轻量级
+│   │   ├── 符合OCI Runtime Spec
+│   │   └── 被containerd调用
+│   └── 命令：runc create/start/exec/delete
+│
+├── Docker Registry（镜像仓库）
+│   ├── 功能：存储和分发Docker镜像
+│   ├── 类型：
+│   │   ├── 公共仓库：Docker Hub、Google Container Registry
+│   │   └── 私有仓库：Harbor、自建Registry
+│   ├── 镜像命名：registry/repository:tag
+│   │   └── 示例：docker.io/library/nginx:latest
+│   └── 操作：pull/push/search/tag
+│
+└── Docker生态系统组件
+    ├── Docker Compose：多容器编排
+    ├── Docker Swarm：容器集群管理
+    ├── Docker Machine：远程Docker主机管理
+    ├── Docker Desktop：桌面版Docker（Windows/Mac）
+    └── 第三方工具：Kubernetes、Portainer、Rancher
+
+详细架构流程图
+═══════════════════════════════════════════════════════════
+
+用户层
+┌─────────────────────────────────────────────────────────┐
+│  User                                                   │
+│  └── docker build/run/ps/exec/logs/stop/rm...        │
+└─────────────────────────────────────────────────────────┘
+                          │
+                          ▼
+Docker Client层
+┌─────────────────────────────────────────────────────────┐
+│  Docker CLI / REST API Client                          │
+│  └── 解析命令 → 构建API请求 → 发送到Docker Daemon    │
+└─────────────────────────────────────────────────────────┘
+                          │
+                          ▼
+Docker Daemon层（dockerd）
+┌─────────────────────────────────────────────────────────┐
+│  Docker Engine API (REST/gRPC)                         │
+│  └── 接收请求 → 路由到对应服务                        │
+│                                                        │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  │
+│  │Image Service │  │Container Svc │  │Network Svc  │  │
+│  │- Build       │  │- Create      │  │- Create     │  │
+│  │- Pull/Push   │  │- Start/Stop  │  │- Connect    │  │
+│  │- List/Remove │  │- Exec/Attach │  │- Disconnect │  │
+│  └──────────────┘  └──────────────┘  └──────────────┘  │
+│                                                        │
+│  ┌──────────────┐  ┌──────────────┐                   │
+│  │ Volume Svc   │  │  System Svc  │                   │
+│  │ - Create     │  │  - Info      │                   │
+│  │ - Mount      │  │  - Events    │                   │
+│  │ - Remove     │  │  - Prune     │                   │
+│  └──────────────┘  └──────────────┘                   │
+└─────────────────────────────────────────────────────────┘
+                          │
+                          ▼
+Containerd层（容器运行时管理）
+┌─────────────────────────────────────────────────────────┐
+│  Containerd Daemon                                     │
+│  ├── GRPC API                                          │
+│  ├── Image Service (pull/push/manage images)           │
+│  ├── Content Service (content addressing)              │
+│  ├── Snapshot Service (layer management)               │
+│  ├── Runtime Service (container lifecycle)           │
+│  └── Task Service (process management)                 │
+└─────────────────────────────────────────────────────────┘
+                          │
+                          ▼
+Runc层（OCI运行时）
+┌─────────────────────────────────────────────────────────┐
+│  RunC (OCI Runtime)                                    │
+│  ├── 创建容器命名空间 (Namespaces)                     │
+│  ├── 配置控制组 (cgroups)                               │
+│  ├── 设置文件系统隔离                                   │
+│  ├── 配置网络隔离                                       │
+│  └── 执行容器进程                                       │
+└─────────────────────────────────────────────────────────┘
+                          │
+                          ▼
+操作系统内核层
+┌─────────────────────────────────────────────────────────┐
+│  Linux Kernel                                          │
+│  ├── Namespaces (PID, Network, Mount, User, IPC, UTS)   │
+│  ├── cgroups (CPU, Memory, IO, Network, PIDs)          │
+│  ├── Union File Systems (Overlay2, AUFS, Btrfs)        │
+│  ├── Network Bridges and iptables                      │
+│  └── Security Modules (SELinux, AppArmor)              │
+└─────────────────────────────────────────────────────────┘
+═══════════════════════════════════════════════════════════
+</code></pre>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag"># 面试</a>
+              <a href="/tags/Docker/" rel="tag"># Docker</a>
+              <a href="/tags/%E5%AE%B9%E5%99%A8%E5%8C%96/" rel="tag"># 容器化</a>
+              <a href="/tags/DevOps/" rel="tag"># DevOps</a>
+              <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="tag"># 微服务</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/08/11/hello-world/" rel="next" title="Hello World">
+                  Hello World <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Ding</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
