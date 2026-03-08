@@ -27,7 +27,7 @@
 <meta property="og:description" content="1. Docker基础概念1.1 什么是Docker？问题：请解释什么是Docker，以及它解决了什么问题？ 解析： Docker是一个开源的容器化平台，它允许开发者将应用程序及其依赖打包到一个轻量级、可移植的容器中，从而实现快速部署和运行。 Docker解决的核心问题： 123456789101112131415161718192021222324252627282930313233343536">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-01-15T02:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-06T15:44:55.534Z">
+<meta property="article:modified_time" content="2026-03-08T14:13:11.401Z">
 <meta property="article:author" content="Ding">
 <meta property="article:tag" content="面试">
 <meta property="article:tag" content="Docker">
@@ -125,7 +125,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Docker%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">1. Docker基础概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E4%BB%80%E4%B9%88%E6%98%AFDocker%EF%BC%9F"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 什么是Docker？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E5%AE%B9%E5%99%A8-vs-%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 容器 vs 虚拟机</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Docker%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">2. Docker核心组件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Docker%E6%9E%B6%E6%9E%84"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Docker架构</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Docker%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">1. Docker基础概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E4%BB%80%E4%B9%88%E6%98%AFDocker%EF%BC%9F"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 什么是Docker？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E5%AE%B9%E5%99%A8-vs-%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 容器 vs 虚拟机</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Docker%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">2. Docker核心组件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Docker%E6%9E%B6%E6%9E%84"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Docker架构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text">常见面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#docker%E5%AE%B9%E5%99%A8%E6%9C%89%E5%87%A0%E7%A7%8D%E7%8A%B6%E6%80%81"><span class="nav-number">3.1.</span> <span class="nav-text">docker容器有几种状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dockerfile%E9%87%8C%E9%9D%A2%E6%9C%80%E5%B8%B8%E8%A7%81%E7%9A%84%E6%8C%87%E4%BB%A4%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">3.2.</span> <span class="nav-text">dockerfile里面最常见的指令是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dockerfile%E4%B8%ADcopy%E5%92%8Cadd%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.3.</span> <span class="nav-text">dockerfile中copy和add的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-%E7%9A%84%E6%A0%B8%E5%BF%83%E5%AE%9E%E7%8E%B0%E6%8A%80%E6%9C%AF%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">3.4.</span> <span class="nav-text">Docker 的核心实现技术是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-%E4%B8%8E%E4%BC%A0%E7%BB%9F%E8%99%9A%E6%8B%9F%E5%8C%96%EF%BC%88VM%EF%BC%89%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">3.5.</span> <span class="nav-text">Docker 与传统虚拟化（VM）的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Docker-%E9%95%9C%E5%83%8F%E4%B8%8E%E5%AE%B9%E5%99%A8%E7%9A%84%E5%85%B3%E7%B3%BB%EF%BC%9F"><span class="nav-number">3.6.</span> <span class="nav-text">什么是 Docker 镜像与容器的关系？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">3.7.</span> <span class="nav-text">docker的常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%B9%E5%99%A8%E4%B8%8E%E4%B8%BB%E6%9C%BA%E4%B9%8B%E9%97%B4%E7%9A%84%E6%95%B0%E6%8D%AE%E6%8B%B7%E8%B4%9D%E5%91%BD%E4%BB%A4"><span class="nav-number">3.8.</span> <span class="nav-text">容器与主机之间的数据拷贝命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">3.9.</span> <span class="nav-text">常用命令</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -206,7 +206,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-03-06 23:44:55" itemprop="dateModified" datetime="2026-03-06T23:44:55+08:00">2026-03-06</time>
+      <time title="修改时间：2026-03-08 22:13:11" itemprop="dateModified" datetime="2026-03-08T22:13:11+08:00">2026-03-08</time>
     </span>
 
   
@@ -281,144 +281,26 @@
 <h2 id="2-Docker核心组件"><a href="#2-Docker核心组件" class="headerlink" title="2. Docker核心组件"></a>2. Docker核心组件</h2><h3 id="2-1-Docker架构"><a href="#2-1-Docker架构" class="headerlink" title="2.1 Docker架构"></a>2.1 Docker架构</h3><p><strong>问题</strong>：Docker的架构是怎样的？各个组件的作用是什么？</p>
 <p><strong>解析</strong>：</p>
 <p><strong>Docker架构图</strong>：</p>
-<pre><code>Docker整体架构
-│
-├── Docker客户端（Docker Client）
-│   ├── 命令行接口（docker CLI）
-│   ├── REST API客户端
-│   └── 与Docker Daemon通信
-│
-├── Docker守护进程（Docker Daemon - dockerd）
-│   ├── 核心功能：
-│   │   ├── 镜像管理（构建、拉取、存储）
-│   │   ├── 容器管理（创建、运行、监控）
-│   │   ├── 网络管理（创建、连接、隔离）
-│   │   ├── 存储管理（Volume、Bind Mount）
-│   │   └── 资源管理（CPU、内存、IO限制）
-│   │
-│   ├── 模块组成：
-│   │   ├── Image Service：镜像服务
-│   │   ├── Container Service：容器服务
-│   │   ├── Network Service：网络服务
-│   │   ├── Volume Service：存储服务
-│   │   └── Execution Driver：执行驱动（runc等）
-│   │
-│   └── 通信接口：
-│       ├── REST API（/var/run/docker.sock）
-│       └── gRPC（内部组件间通信）
-│
-├── Containerd（容器运行时管理）
-│   ├── 从Docker Daemon中分离出的核心容器运行时
-│   ├── 功能：
-│   │   ├── 镜像管理（拉取、推送、存储）
-│   │   ├── 容器生命周期管理
-│   │   └── 快照管理（Snapshot）
-│   ├── 架构：
-│   │   ├── Daemon：containerd服务
-│   │   ├── Client：ctr命令行工具
-│   │   └── API：gRPC接口
-│   └── 标准化：符合OCI（Open Container Initiative）标准
-│
-├── Runc（容器运行时）
-│   ├── 底层的容器执行工具
-│   ├── 功能：
-│   │   ├── 创建容器
-│   │   ├── 配置namespace和cgroup
-│   │   └── 执行容器内的进程
-│   ├── 特点：
-│   │   ├── 轻量级
-│   │   ├── 符合OCI Runtime Spec
-│   │   └── 被containerd调用
-│   └── 命令：runc create/start/exec/delete
-│
-├── Docker Registry（镜像仓库）
-│   ├── 功能：存储和分发Docker镜像
-│   ├── 类型：
-│   │   ├── 公共仓库：Docker Hub、Google Container Registry
-│   │   └── 私有仓库：Harbor、自建Registry
-│   ├── 镜像命名：registry/repository:tag
-│   │   └── 示例：docker.io/library/nginx:latest
-│   └── 操作：pull/push/search/tag
-│
-└── Docker生态系统组件
-    ├── Docker Compose：多容器编排
-    ├── Docker Swarm：容器集群管理
-    ├── Docker Machine：远程Docker主机管理
-    ├── Docker Desktop：桌面版Docker（Windows/Mac）
-    └── 第三方工具：Kubernetes、Portainer、Rancher
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br></pre></td><td class="code"><pre><span class="line">Docker整体架构</span><br><span class="line">│</span><br><span class="line">├── Docker客户端（Docker Client）</span><br><span class="line">│   ├── 命令行接口（docker CLI）</span><br><span class="line">│   ├── REST API客户端</span><br><span class="line">│   └── 与Docker Daemon通信</span><br><span class="line">│</span><br><span class="line">├── Docker守护进程（Docker Daemon - dockerd）</span><br><span class="line">│   ├── 核心功能：</span><br><span class="line">│   │   ├── 镜像管理（构建、拉取、存储）</span><br><span class="line">│   │   ├── 容器管理（创建、运行、监控）</span><br><span class="line">│   │   ├── 网络管理（创建、连接、隔离）</span><br><span class="line">│   │   ├── 存储管理（Volume、Bind Mount）</span><br><span class="line">│   │   └── 资源管理（CPU、内存、IO限制）</span><br><span class="line">│   │</span><br><span class="line">│   ├── 模块组成：</span><br><span class="line">│   │   ├── Image Service：镜像服务</span><br><span class="line">│   │   ├── Container Service：容器服务</span><br><span class="line">│   │   ├── Network Service：网络服务</span><br><span class="line">│   │   ├── Volume Service：存储服务</span><br><span class="line">│   │   └── Execution Driver：执行驱动（runc等）</span><br><span class="line">│   │</span><br><span class="line">│   └── 通信接口：</span><br><span class="line">│       ├── REST API（/var/run/docker.sock）</span><br><span class="line">│       └── gRPC（内部组件间通信）</span><br><span class="line">│</span><br><span class="line">├── Containerd（容器运行时管理）</span><br><span class="line">│   ├── 从Docker Daemon中分离出的核心容器运行时</span><br><span class="line">│   ├── 功能：</span><br><span class="line">│   │   ├── 镜像管理（拉取、推送、存储）</span><br><span class="line">│   │   ├── 容器生命周期管理</span><br><span class="line">│   │   └── 快照管理（Snapshot）</span><br><span class="line">│   ├── 架构：</span><br><span class="line">│   │   ├── Daemon：containerd服务</span><br><span class="line">│   │   ├── Client：ctr命令行工具</span><br><span class="line">│   │   └── API：gRPC接口</span><br><span class="line">│   └── 标准化：符合OCI（Open Container Initiative）标准</span><br><span class="line">│</span><br><span class="line">├── Runc（容器运行时）</span><br><span class="line">│   ├── 底层的容器执行工具</span><br><span class="line">│   ├── 功能：</span><br><span class="line">│   │   ├── 创建容器</span><br><span class="line">│   │   ├── 配置namespace和cgroup</span><br><span class="line">│   │   └── 执行容器内的进程</span><br><span class="line">│   ├── 特点：</span><br><span class="line">│   │   ├── 轻量级</span><br><span class="line">│   │   ├── 符合OCI Runtime Spec</span><br><span class="line">│   │   └── 被containerd调用</span><br><span class="line">│   └── 命令：runc create/start/exec/delete</span><br><span class="line">│</span><br><span class="line">├── Docker Registry（镜像仓库）</span><br><span class="line">│   ├── 功能：存储和分发Docker镜像</span><br><span class="line">│   ├── 类型：</span><br><span class="line">│   │   ├── 公共仓库：Docker Hub、Google Container Registry</span><br><span class="line">│   │   └── 私有仓库：Harbor、自建Registry</span><br><span class="line">│   ├── 镜像命名：registry/repository:tag</span><br><span class="line">│   │   └── 示例：docker.io/library/nginx:latest</span><br><span class="line">│   └── 操作：pull/push/search/tag</span><br><span class="line">│</span><br><span class="line">└── Docker生态系统组件</span><br><span class="line">    ├── Docker Compose：多容器编排</span><br><span class="line">    ├── Docker Swarm：容器集群管理</span><br><span class="line">    ├── Docker Machine：远程Docker主机管理</span><br><span class="line">    ├── Docker Desktop：桌面版Docker（Windows/Mac）</span><br><span class="line">    └── 第三方工具：Kubernetes、Portainer、Rancher</span><br><span class="line"></span><br><span class="line">详细架构流程图</span><br><span class="line">═══════════════════════════════════════════════════════════</span><br><span class="line"></span><br><span class="line">用户层</span><br><span class="line">┌─────────────────────────────────────────────────────────┐</span><br><span class="line">│  User                                                   │</span><br><span class="line">│  └── docker build/run/ps/exec/logs/stop/rm...        │</span><br><span class="line">└─────────────────────────────────────────────────────────┘</span><br><span class="line">                          │</span><br><span class="line">                          ▼</span><br><span class="line">Docker Client层</span><br><span class="line">┌─────────────────────────────────────────────────────────┐</span><br><span class="line">│  Docker CLI / REST API Client                          │</span><br><span class="line">│  └── 解析命令 → 构建API请求 → 发送到Docker Daemon    │</span><br><span class="line">└─────────────────────────────────────────────────────────┘</span><br><span class="line">                          │</span><br><span class="line">                          ▼</span><br><span class="line">Docker Daemon层（dockerd）</span><br><span class="line">┌─────────────────────────────────────────────────────────┐</span><br><span class="line">│  Docker Engine API (REST/gRPC)                         │</span><br><span class="line">│  └── 接收请求 → 路由到对应服务                        │</span><br><span class="line">│                                                        │</span><br><span class="line">│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  │</span><br><span class="line">│  │Image Service │  │Container Svc │  │Network Svc  │  │</span><br><span class="line">│  │- Build       │  │- Create      │  │- Create     │  │</span><br><span class="line">│  │- Pull/Push   │  │- Start/Stop  │  │- Connect    │  │</span><br><span class="line">│  │- List/Remove │  │- Exec/Attach │  │- Disconnect │  │</span><br><span class="line">│  └──────────────┘  └──────────────┘  └──────────────┘  │</span><br><span class="line">│                                                        │</span><br><span class="line">│  ┌──────────────┐  ┌──────────────┐                   │</span><br><span class="line">│  │ Volume Svc   │  │  System Svc  │                   │</span><br><span class="line">│  │ - Create     │  │  - Info      │                   │</span><br><span class="line">│  │ - Mount      │  │  - Events    │                   │</span><br><span class="line">│  │ - Remove     │  │  - Prune     │                   │</span><br><span class="line">│  └──────────────┘  └──────────────┘                   │</span><br><span class="line">└─────────────────────────────────────────────────────────┘</span><br><span class="line">                          │</span><br><span class="line">                          ▼</span><br><span class="line">Containerd层（容器运行时管理）</span><br><span class="line">┌─────────────────────────────────────────────────────────┐</span><br><span class="line">│  Containerd Daemon                                     │</span><br><span class="line">│  ├── GRPC API                                          │</span><br><span class="line">│  ├── Image Service (pull/push/manage images)           │</span><br><span class="line">│  ├── Content Service (content addressing)              │</span><br><span class="line">│  ├── Snapshot Service (layer management)               │</span><br><span class="line">│  ├── Runtime Service (container lifecycle)           │</span><br><span class="line">│  └── Task Service (process management)                 │</span><br><span class="line">└─────────────────────────────────────────────────────────┘</span><br><span class="line">                          │</span><br><span class="line">                          ▼</span><br><span class="line">Runc层（OCI运行时）</span><br><span class="line">┌─────────────────────────────────────────────────────────┐</span><br><span class="line">│  RunC (OCI Runtime)                                    │</span><br><span class="line">│  ├── 创建容器命名空间 (Namespaces)                     │</span><br><span class="line">│  ├── 配置控制组 (cgroups)                               │</span><br><span class="line">│  ├── 设置文件系统隔离                                   │</span><br><span class="line">│  ├── 配置网络隔离                                       │</span><br><span class="line">│  └── 执行容器进程                                       │</span><br><span class="line">└─────────────────────────────────────────────────────────┘</span><br><span class="line">                          │</span><br><span class="line">                          ▼</span><br><span class="line">操作系统内核层</span><br><span class="line">┌─────────────────────────────────────────────────────────┐</span><br><span class="line">│  Linux Kernel                                          │</span><br><span class="line">│  ├── Namespaces (PID, Network, Mount, User, IPC, UTS)   │</span><br><span class="line">│  ├── cgroups (CPU, Memory, IO, Network, PIDs)          │</span><br><span class="line">│  ├── Union File Systems (Overlay2, AUFS, Btrfs)        │</span><br><span class="line">│  ├── Network Bridges and iptables                      │</span><br><span class="line">│  └── Security Modules (SELinux, AppArmor)              │</span><br><span class="line">└─────────────────────────────────────────────────────────┘</span><br><span class="line">═══════════════════════════════════════════════════════════</span><br></pre></td></tr></table></figure>
 
-详细架构流程图
-═══════════════════════════════════════════════════════════
-
-用户层
-┌─────────────────────────────────────────────────────────┐
-│  User                                                   │
-│  └── docker build/run/ps/exec/logs/stop/rm...        │
-└─────────────────────────────────────────────────────────┘
-                          │
-                          ▼
-Docker Client层
-┌─────────────────────────────────────────────────────────┐
-│  Docker CLI / REST API Client                          │
-│  └── 解析命令 → 构建API请求 → 发送到Docker Daemon    │
-└─────────────────────────────────────────────────────────┘
-                          │
-                          ▼
-Docker Daemon层（dockerd）
-┌─────────────────────────────────────────────────────────┐
-│  Docker Engine API (REST/gRPC)                         │
-│  └── 接收请求 → 路由到对应服务                        │
-│                                                        │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  │
-│  │Image Service │  │Container Svc │  │Network Svc  │  │
-│  │- Build       │  │- Create      │  │- Create     │  │
-│  │- Pull/Push   │  │- Start/Stop  │  │- Connect    │  │
-│  │- List/Remove │  │- Exec/Attach │  │- Disconnect │  │
-│  └──────────────┘  └──────────────┘  └──────────────┘  │
-│                                                        │
-│  ┌──────────────┐  ┌──────────────┐                   │
-│  │ Volume Svc   │  │  System Svc  │                   │
-│  │ - Create     │  │  - Info      │                   │
-│  │ - Mount      │  │  - Events    │                   │
-│  │ - Remove     │  │  - Prune     │                   │
-│  └──────────────┘  └──────────────┘                   │
-└─────────────────────────────────────────────────────────┘
-                          │
-                          ▼
-Containerd层（容器运行时管理）
-┌─────────────────────────────────────────────────────────┐
-│  Containerd Daemon                                     │
-│  ├── GRPC API                                          │
-│  ├── Image Service (pull/push/manage images)           │
-│  ├── Content Service (content addressing)              │
-│  ├── Snapshot Service (layer management)               │
-│  ├── Runtime Service (container lifecycle)           │
-│  └── Task Service (process management)                 │
-└─────────────────────────────────────────────────────────┘
-                          │
-                          ▼
-Runc层（OCI运行时）
-┌─────────────────────────────────────────────────────────┐
-│  RunC (OCI Runtime)                                    │
-│  ├── 创建容器命名空间 (Namespaces)                     │
-│  ├── 配置控制组 (cgroups)                               │
-│  ├── 设置文件系统隔离                                   │
-│  ├── 配置网络隔离                                       │
-│  └── 执行容器进程                                       │
-└─────────────────────────────────────────────────────────┘
-                          │
-                          ▼
-操作系统内核层
-┌─────────────────────────────────────────────────────────┐
-│  Linux Kernel                                          │
-│  ├── Namespaces (PID, Network, Mount, User, IPC, UTS)   │
-│  ├── cgroups (CPU, Memory, IO, Network, PIDs)          │
-│  ├── Union File Systems (Overlay2, AUFS, Btrfs)        │
-│  ├── Network Bridges and iptables                      │
-│  └── Security Modules (SELinux, AppArmor)              │
-└─────────────────────────────────────────────────────────┘
-═══════════════════════════════════════════════════════════
-</code></pre>
+<h2 id="常见面试题"><a href="#常见面试题" class="headerlink" title="常见面试题"></a>常见面试题</h2><h3 id="docker容器有几种状态"><a href="#docker容器有几种状态" class="headerlink" title="docker容器有几种状态"></a>docker容器有几种状态</h3><p>四种状态，运行、已停止、重新启动、已推出</p>
+<h3 id="dockerfile里面最常见的指令是什么"><a href="#dockerfile里面最常见的指令是什么" class="headerlink" title="dockerfile里面最常见的指令是什么"></a>dockerfile里面最常见的指令是什么</h3><p>from：置顶基础镜像<br>label：为镜像添加元数据标签<br>run：运行指定命令<br>cmd：启动时要运行的命令</p>
+<h3 id="dockerfile中copy和add的区别"><a href="#dockerfile中copy和add的区别" class="headerlink" title="dockerfile中copy和add的区别"></a>dockerfile中copy和add的区别</h3><p>copy的src只能是本地文件</p>
+<h3 id="Docker-的核心实现技术是什么？"><a href="#Docker-的核心实现技术是什么？" class="headerlink" title="Docker 的核心实现技术是什么？"></a>Docker 的核心实现技术是什么？</h3><p>关键点： Namespace（命名空间，实现资源隔离，如 PID、Network、Mount 等）和 Cgroups（控制组，实现资源限制，如 CPU、内存限制）。</p>
+<h3 id="Docker-与传统虚拟化（VM）的区别？"><a href="#Docker-与传统虚拟化（VM）的区别？" class="headerlink" title="Docker 与传统虚拟化（VM）的区别？"></a>Docker 与传统虚拟化（VM）的区别？</h3><p>关键点： 虚拟机有完整的 OS，占用资源大；容器共享宿主机内核，轻量级，启动秒级。</p>
+<h3 id="什么是-Docker-镜像与容器的关系？"><a href="#什么是-Docker-镜像与容器的关系？" class="headerlink" title="什么是 Docker 镜像与容器的关系？"></a>什么是 Docker 镜像与容器的关系？</h3><p>关键点： 镜像（Image）是静态的模板（只读）；容器（Container）是镜像运行后的实例（动态、可读写）。</p>
+<h3 id="docker的常用命令"><a href="#docker的常用命令" class="headerlink" title="docker的常用命令"></a>docker的常用命令</h3><p>docker pull拉取或者更新指定的镜像<br>docker push 将镜像推送到远程仓库<br>docker rm 删除容器<br>docker rmi 删除镜像<br>docker images 列出所有镜像<br>docker ps列出所有容器</p>
+<h3 id="容器与主机之间的数据拷贝命令"><a href="#容器与主机之间的数据拷贝命令" class="headerlink" title="容器与主机之间的数据拷贝命令"></a>容器与主机之间的数据拷贝命令</h3><p>docler cp命令用于容器与主机之间的数据拷贝<br>主机到容器：docker cp &lt;主机路径&gt; &lt;容器ID&gt;:&lt;容器路径&gt;<br>容器到主机：docker cp &lt;容器ID&gt;:&lt;容器路径&gt; &lt;主机路径&gt;</p>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><ol>
+<li><p>Docker 服务管理<br>启动docker：systemctl start docker<br>停止docker：systemctl stop docker<br>重启docker：systemctl restart docker<br>查看docker状态：systemctl status docker<br>设置docker开启自启动：systemctl enable docker</p>
+</li>
+<li><p>系统与信息查看<br>查看docker概要信息：docker info<br>查看docker总体帮助文档：docker –help<br>查看docker中的run命令帮助文档：docker run –help<br>查看docker版本：docker version</p>
+</li>
+<li><p>镜像管理 (Images)<br>查看本地主机上的docker所有镜像：docker images<br>查看本地主机上的docker的所有镜像，只显示镜像id：docker images -q<br>去配置的镜像网站寻找某个镜像：docker search [镜像名]<br>从远程库拉取镜像：docker pull [镜像名]<br>查看镜像所占空间：docker system df<br>删除本地单个镜像：docker rmi [镜像ID&#x2F;标签]<br>强制删除本地单个镜像：docker rmi -f [镜像ID&#x2F;标签]<br>删除多个镜像：docker rmi [镜像ID1] [镜像ID2] …</p>
+</li>
+<li><p>容器管理 (Containers)<br>新建启动容器：docker run [参数] [镜像名]<br>列出所有正在运行的容器：docker ps<br>列出所有容器（包括已停止的）：docker ps -a<br>删除容器：docker rm [容器ID&#x2F;名称]</p>
+</li>
+</ol>
 
     </div>
 
